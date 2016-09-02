@@ -13,3 +13,6 @@ This chapter talks about the story of Jesse Jordan, a Freshman at RPI in 2002.  
 ![metrom](images/regex.jpg)
 ![metrom](images/regex2.jpg)
 ![metrom](images/blockly.jpg)
+
+## Reflection
+I am interested in cooking good food.  I like to read recipes online and try new things in the kitchen.  I often find that my taste differs from other people, so I tend to cusstomize recipes to my personal taste.  For instance, I like my food a lot saltier than most other people.  I generally salt food to taste when possible, but for foods that include raw ingredients which I cannot taste, I will stick to the recipe and adjust it for the next time.  When experimenting in the kitchen, I have to make sure I don't test too many variables at the same time.  If I take a recipe that I know is good, and change one variable in it, I can find the perfect recipe for my tastes.  If I try too many things at once, I will be unable to tell what made the recipe bad, and I won't learn anything.
