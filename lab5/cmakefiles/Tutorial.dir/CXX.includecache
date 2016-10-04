@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/michael/Dropbox/CSCI2961/lab5/TutorialConfig.h
+
+/home/michael/Dropbox/CSCI2961/lab5/tutorial.cxx
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+TutorialConfig.h
+/home/michael/Dropbox/CSCI2961/lab5/TutorialConfig.h
+MathFunctions.h
+/home/michael/Dropbox/CSCI2961/lab5/MathFunctions.h
+
