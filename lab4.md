@@ -1,0 +1,2 @@
+## Lab 4
+We found a typo in freebsd documentation.  It's important to keep good documentation, because it helps new users understand the software.  Often new developers have trouble contributing to a project, because they cannot understand the inner workings of the project.  From the lab, I learned that people often make typos when writing documentation, and I also learned that people often take their understanding of their project for granted.
