@@ -1,0 +1,34 @@
+CarLogicApi
+Contributors: 2
+Lines of Code: 283504
+First Commit: September 6, 2016
+Latest Commit: October 4, 2016
+Branches: 1
+
+gitstats
+
+     
+
+Project name
+    carlogicapi
+Generated
+    2016-10-14 09:36:52 (in 2 seconds)
+Generator
+    GitStats (version 55c5c28), git version 1.9.1, gnuplot 4.6 patchlevel 4
+Report Period
+    2016-09-06 13:45:31 to 2016-10-12 19:20:38
+Age
+    38 days, 9 active days (23.68%)
+Total Files
+    56
+Total Lines of Code
+    280241 (283667 added, 3426 removed)
+Total Commits
+    67 (average 7.4 commits per active day, 1.8 per all days)
+Authors
+    4 (average 16.8 commits per author)
+
+    gource -1280x720 -o gource.ppm --time-scale 3
+ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i gource.ppm  -vcodec mpeg4 -b 3000k -s hd480 gource.mp4
+
+https://www.youtube.com/watch?v=R9SWyriznGA&feature=youtu.be
