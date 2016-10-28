@@ -51,11 +51,12 @@ def _wdist(a,b):
     dicti = defaultdict(lambda: 0)
 
     for k in range (0, len(a)):
-        dicti[a[k]] = dicti[a[k]] + 0.5
+        dicti[a[k]] += 0.5
     for k in range(0,len(b)):
-        dicti[b[k]] = dicti[b[k]] - 0.5
+        dicti[b[k]] -= 0.5
 
     #return sum(dicti.values())
+
     sum = 0
     for c in ascii_lowercase:
         sum += abs(dicti[c])
