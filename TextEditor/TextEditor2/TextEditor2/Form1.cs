@@ -28,7 +28,7 @@ namespace TextEditor2
             //An aggregate catalog that combines multiple catalogs
             var catalog = new AggregateCatalog();
             //Adds all the parts found in the same assembly as the Program class
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+            
             try
             {
                 catalog.Catalogs.Add(new DirectoryCatalog("Extensions"));
@@ -46,9 +46,11 @@ namespace TextEditor2
             {
                 this._container.ComposeParts(this);
             }
-            catch (CompositionException compositionException)
+            catch(System.ComponentModel.Composition.ChangeRejectedException)
             {
-                Console.WriteLine(compositionException.ToString());
+                catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+                _container = new CompositionContainer(catalog);
+                this._container.ComposeParts(this);
             }
 
             textBox1.ForeColor = colorizePlugin.Colorize("");
@@ -57,15 +59,15 @@ namespace TextEditor2
         private CompositionContainer _container;
     }
 
-    /*
+    
     [Export(typeof(IColorizePlugin))]
-    class RandomColorize : IColorizePlugin
+    class RedColorize : IColorizePlugin
     {
         Color IColorizePlugin.Colorize(String input)
         {
-            Random random = new Random();
-            return Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+            return Color.FromArgb(255, 0, 0);
         }
     }
-    */
+    
+    
 }
