@@ -29,6 +29,14 @@ namespace TextEditor2
             var catalog = new AggregateCatalog();
             //Adds all the parts found in the same assembly as the Program class
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+            try
+            {
+                catalog.Catalogs.Add(new DirectoryCatalog("..\\Extensions"));
+            }
+            catch (System.IO.DirectoryNotFoundException)
+            {
+
+            }
 
             //Create the CompositionContainer with the parts in the catalog
             _container = new CompositionContainer(catalog);
