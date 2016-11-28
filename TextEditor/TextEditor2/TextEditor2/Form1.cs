@@ -10,17 +10,52 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace TextEditor2
 {
+    public interface IColorizePlugin
+    {
+        Color Colorize(String input);
+    }
+
     public partial class Form1 : Form
     {
+        [Import(typeof(IColorizePlugin))]
+        public IColorizePlugin colorizePlugin;
+
         public Form1()
         {
             InitializeComponent();
             //An aggregate catalog that combines multiple catalogs
             var catalog = new AggregateCatalog();
+            //Adds all the parts found in the same assembly as the Program class
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+
+            //Create the CompositionContainer with the parts in the catalog
+            _container = new CompositionContainer(catalog);
+
+            //Fill the imports of this object
+            try
+            {
+                this._container.ComposeParts(this);
+            }
+            catch (CompositionException compositionException)
+            {
+                Console.WriteLine(compositionException.ToString());
+            }
+
+            textBox1.ForeColor = colorizePlugin.Colorize("");
+        }
+
+        private CompositionContainer _container;
+    }
+
+    [Export(typeof(IColorizePlugin))]
+    class RandomColorize : IColorizePlugin
+    {
+        Color IColorizePlugin.Colorize(String input)
+        {
+            Random random = new Random();
+            return Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
         }
     }
 }
