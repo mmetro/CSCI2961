@@ -31,11 +31,11 @@ namespace TextEditor2
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
             try
             {
-                catalog.Catalogs.Add(new DirectoryCatalog("..\\Extensions"));
+                catalog.Catalogs.Add(new DirectoryCatalog("Extensions"));
             }
             catch (System.IO.DirectoryNotFoundException)
             {
-
+                MessageBox.Show("The extensions directory was not found", "Directory not found");
             }
 
             //Create the CompositionContainer with the parts in the catalog
@@ -57,6 +57,7 @@ namespace TextEditor2
         private CompositionContainer _container;
     }
 
+    /*
     [Export(typeof(IColorizePlugin))]
     class RandomColorize : IColorizePlugin
     {
@@ -66,4 +67,5 @@ namespace TextEditor2
             return Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
         }
     }
+    */
 }
