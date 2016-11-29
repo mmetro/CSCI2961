@@ -53,13 +53,64 @@ namespace TextEditor2
                 this._container.ComposeParts(this);
             }
 
-            textBox1.ForeColor = colorizePlugin.Colorize("");
+            richTextBox1.ForeColor = normalColor = colorizePlugin.Colorize("");
         }
 
         private CompositionContainer _container;
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Open a File";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.File.WriteAllText(saveFileDialog1.FileName, richTextBox1.Text);
+            }
+        }
+
+        // https://stackoverflow.com/questions/21980554/color-specific-words-in-richtextbox
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.CheckKeyword("apple", colorizePlugin.Colorize("apple"));
+            this.CheckKeyword("banana", colorizePlugin.Colorize("banana"));
+        }
+
+        //https://stackoverflow.com/questions/21980554/color-specific-words-in-richtextbox
+        private void CheckKeyword(string word, Color color, int startIndex = 0)
+        {
+            if (this.richTextBox1.Text.Contains(word))
+            {
+                int index = -1;
+                int selectStart = this.richTextBox1.SelectionStart;
+
+                while ((index = this.richTextBox1.Text.IndexOf(word, (index + 1))) != -1)
+                {
+                    this.richTextBox1.Select((index + startIndex), word.Length);
+                    this.richTextBox1.SelectionColor = color;
+                    this.richTextBox1.Select(selectStart, 0);
+                    this.richTextBox1.SelectionColor = normalColor;
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Open a File";
+            openFileDialog1.ShowDialog();
+
+            if (openFileDialog1.FileName != "")
+            {
+                richTextBox1.Text = System.IO.File.ReadAllText(openFileDialog1.FileName);
+            }
+        }
+
+        private Color normalColor;
     }
 
-    
+
     [Export(typeof(IColorizePlugin))]
     class RedColorize : IColorizePlugin
     {
