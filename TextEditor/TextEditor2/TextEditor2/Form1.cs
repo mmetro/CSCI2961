@@ -114,11 +114,11 @@ namespace TextEditor2
 
 
     [Export(typeof(IColorizePlugin))]
-    class RedColorize : IColorizePlugin
+    class BlackColorize : IColorizePlugin
     {
         Color IColorizePlugin.Colorize(String input)
         {
-            return Color.FromArgb(255, 0, 0);
+            return Color.FromArgb(0, 0, 0);
         }
     }
     
