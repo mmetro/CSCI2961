@@ -118,7 +118,7 @@ namespace TextEditor2
     {
         Color IColorizePlugin.Colorize(String input)
         {
-            return Color.FromArgb(0, 0, 0);
+            return Color.Black;
         }
     }
     
