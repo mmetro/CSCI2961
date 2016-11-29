@@ -48,6 +48,7 @@ namespace TextEditor2
             }
             catch(System.ComponentModel.Composition.ChangeRejectedException)
             {
+                catalog.Catalogs.Clear();
                 catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
                 _container = new CompositionContainer(catalog);
                 this._container.ComposeParts(this);
@@ -75,6 +76,7 @@ namespace TextEditor2
         {
             this.CheckKeyword("apple", colorizePlugin.Colorize("apple"));
             this.CheckKeyword("banana", colorizePlugin.Colorize("banana"));
+            this.CheckKeyword("orange", colorizePlugin.Colorize("orange"));
         }
 
         //https://stackoverflow.com/questions/21980554/color-specific-words-in-richtextbox
